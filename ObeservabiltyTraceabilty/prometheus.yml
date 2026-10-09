@@ -1,0 +1,35 @@
+# Prometheus configuration for Observability & Traceability Application
+# Save this as prometheus.yml in your Prometheus directory
+
+global:
+  scrape_interval: 15s      # Default scrape interval
+  evaluation_interval: 15s  # How often to evaluate rules
+  external_labels:
+    monitor: 'observability-app-monitor'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - 'alertmanager:9093'
+
+# Load rules once and periodically evaluate them
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Observability & Traceability Application
+  - job_name: 'observability-app'
+    static_configs:
+      - targets: ['host.docker.internal:5079']
+    metrics_path: '/metrics'
+    scrape_interval: 5s      # More frequent scraping for application metrics
+    scrape_timeout: 4s

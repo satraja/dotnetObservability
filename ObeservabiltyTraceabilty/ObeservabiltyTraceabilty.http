@@ -1,0 +1,7 @@
+@ObeservabiltyTraceabilty_HostAddress = http://localhost:5079
+
+GET {{ObeservabiltyTraceabilty_HostAddress}}/api/orders
+Accept: application/json
+X-Trace-Id: sample-trace-1
+
+###

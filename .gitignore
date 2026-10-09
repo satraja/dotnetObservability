@@ -55,3 +55,16 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# .NET / Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+*.rsuser
+launchSettings.json.user
+*.log
+*.pdb
+TestResults/
+.idea/
+.vscode/
